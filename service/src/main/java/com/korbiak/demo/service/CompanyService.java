@@ -14,5 +14,7 @@ public interface CompanyService {
 
     CompanyDto updateCompany(CompanyDto companyDto);
 
+    CompanyDto resetCompany(CompanyInputDto companyInputDto);
+
     void deleteCompany(int id);
 }

@@ -36,6 +36,11 @@ public class CompanyController {
         return companyService.updateCompany(inputDto);
     }
 
+    @PostMapping("reset")
+    public CompanyDto resetCompany(@RequestBody @Validated CompanyInputDto companyInputDto) {
+        return companyService.resetCompany(companyInputDto);
+    }
+
     @DeleteMapping("{companyId}")
     public void deleteCompany(@PathVariable int companyId) {
         companyService.deleteCompany(companyId);
