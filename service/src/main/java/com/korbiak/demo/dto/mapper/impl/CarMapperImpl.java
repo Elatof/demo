@@ -1,10 +1,10 @@
-package com.korbiak.demo.mapper.impl;
+package com.korbiak.demo.dto.mapper.impl;
 
 import com.korbiak.demo.dto.input.CarInputDto;
+import com.korbiak.demo.dto.mapper.CarCompanyMapper;
+import com.korbiak.demo.dto.mapper.CarMapper;
+import com.korbiak.demo.dto.mapper.EngineMapper;
 import com.korbiak.demo.dto.output.CarDto;
-import com.korbiak.demo.mapper.CarMapper;
-import com.korbiak.demo.mapper.CompanyMapper;
-import com.korbiak.demo.mapper.EngineMapper;
 import com.korbiak.demo.model.Car;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -15,11 +15,14 @@ import java.util.stream.Collectors;
 @RequiredArgsConstructor
 public class CarMapperImpl implements CarMapper {
 
-    private final CompanyMapper companyMapper;
+    private final CarCompanyMapper companyMapper;
     private final EngineMapper engineMapper;
 
     @Override
     public CarDto getDtoFromModel(Car car) {
+        if (car == null) {
+            return new CarDto();
+        }
         return CarDto.builder()
                 .id(car.getId())
                 .company(companyMapper.getDtoFromModel(car.getCompany()))
@@ -34,6 +37,9 @@ public class CarMapperImpl implements CarMapper {
 
     @Override
     public Car getModelFromDto(CarInputDto carInputDto) {
+        if (carInputDto == null) {
+            return new Car();
+        }
         return Car.builder()
                 .company(companyMapper.getModelFromDto(carInputDto.getCompany()))
                 .date(carInputDto.getDate())
@@ -47,6 +53,9 @@ public class CarMapperImpl implements CarMapper {
 
     @Override
     public Car getModelFromDto(CarDto carDto) {
+        if (carDto == null) {
+            return new Car();
+        }
         return Car.builder()
                 .id(carDto.getId())
                 .company(companyMapper.getModelFromDto(carDto.getCompany()))

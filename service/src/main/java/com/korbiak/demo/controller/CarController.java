@@ -21,7 +21,17 @@ public class CarController {
         return carService.getAllCars();
     }
 
-    @GetMapping(path = "{carId}")
+    @GetMapping("companies")
+    public List<CarDto> getCarsByCompanyIds(@RequestParam("ids") List<Integer> companyIds) {
+        return carService.getCarsByCompanyIds(companyIds);
+    }
+
+    @GetMapping("engines")
+    public List<CarDto> getCarsByEngineIds(@RequestParam("ids") List<Integer> engineIds) {
+        return carService.getCarsByEngineIds(engineIds);
+    }
+
+    @GetMapping("{carId}")
     public CarDto getCarById(@PathVariable int carId) {
         return carService.getCarById(carId);
     }
@@ -32,7 +42,7 @@ public class CarController {
     }
 
     @PutMapping
-    public CarDto UpdateCar(@RequestBody @Validated CarDto inputDto) {
+    public CarDto updateCar(@RequestBody @Validated CarDto inputDto) {
         return carService.updateCar(inputDto);
     }
 

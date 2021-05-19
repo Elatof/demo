@@ -1,9 +1,8 @@
-package com.korbiak.demo.mapper;
+package com.korbiak.demo.dto.mapper;
 
 import com.korbiak.demo.dto.input.CarInputDto;
 import com.korbiak.demo.dto.output.CarDto;
 import com.korbiak.demo.model.Car;
-import org.mapstruct.Mapper;
 
 public interface CarMapper {
 

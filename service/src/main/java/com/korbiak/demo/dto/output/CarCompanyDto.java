@@ -5,22 +5,22 @@ import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
 @Builder
-public class CompanyDto {
+@NoArgsConstructor
+@AllArgsConstructor
+public class CarCompanyDto {
 
     private int id;
 
-    @NotBlank
+    @Size(max = 25)
     private String name;
 
-    @NotBlank
+    @Size(max = 25)
     private String country;
 
-    @NotBlank
+    @Size(max = 25)
     private String city;
 }

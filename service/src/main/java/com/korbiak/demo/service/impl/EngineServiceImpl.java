@@ -1,13 +1,13 @@
 package com.korbiak.demo.service.impl;
 
 import com.korbiak.demo.dto.input.EngineInputDto;
+import com.korbiak.demo.dto.mapper.EngineMapper;
 import com.korbiak.demo.dto.output.EngineDto;
-import com.korbiak.demo.mapper.EngineMapper;
-import com.korbiak.demo.model.Company;
 import com.korbiak.demo.model.Engine;
 import com.korbiak.demo.repository.EngineRepo;
 import com.korbiak.demo.service.EngineService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
@@ -54,9 +54,9 @@ public class EngineServiceImpl implements EngineService {
 
     @Override
     public void deleteEngine(int id) {
-        if (engineRepo.existsById(id)){
+        try {
             engineRepo.deleteById(id);
-        } else {
+        } catch (EmptyResultDataAccessException exception) {
             throw new IllegalArgumentException("Engine not exist with id = " + id);
         }
     }

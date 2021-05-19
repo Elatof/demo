@@ -24,19 +24,7 @@ import java.util.stream.Collectors;
 
 @Order(Ordered.HIGHEST_PRECEDENCE)
 @RestControllerAdvice
-public class ExceptionHandlerApi extends ResponseEntityExceptionHandler {
-
-    @ExceptionHandler(IllegalArgumentException.class)
-    @ResponseStatus(HttpStatus.BAD_REQUEST)
-    protected ApiError handleIllegalArgumentExceptions(IllegalArgumentException exception) {
-        return getApiError(exception, HttpStatus.BAD_REQUEST);
-    }
-
-    @ExceptionHandler(EntityNotFoundException.class)
-    @ResponseStatus(HttpStatus.NOT_FOUND)
-    protected ApiError handleEntityNotFound(EntityNotFoundException exception) {
-        return getApiError(exception, HttpStatus.NOT_FOUND);
-    }
+public class ValidationExceptionHandlerApi extends ResponseEntityExceptionHandler {
 
     @Override
     @ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -67,15 +55,6 @@ public class ExceptionHandlerApi extends ResponseEntityExceptionHandler {
                 .field(fieldError.getField())
                 .message(fieldError.getDefaultMessage())
                 .rejectedValue(fieldError.getRejectedValue())
-                .build();
-    }
-
-    private ApiError getApiError(Exception e, HttpStatus httpStatus) {
-        return ApiError.builder()
-                .status(httpStatus)
-                .message(e.getMessage())
-                .timestamp(LocalDateTime.now())
-                .subErrors(new ArrayList<>())
                 .build();
     }
 }

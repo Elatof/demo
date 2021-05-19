@@ -31,7 +31,7 @@ public class Car {
 
     @ManyToOne
     @JoinColumn(name = "car_company_id")
-    private Company company;
+    private CarCompany company;
 
     @ManyToMany
     @JoinTable(

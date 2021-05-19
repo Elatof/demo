@@ -1,21 +1,23 @@
 package com.korbiak.demo.dto.input;
 
 import lombok.AllArgsConstructor;
+import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
-import javax.validation.constraints.NotBlank;
+import javax.validation.constraints.Size;
 
 @Data
-@AllArgsConstructor
+@Builder
 @NoArgsConstructor
-public class CompanyInputDto {
-    @NotBlank
+@AllArgsConstructor
+public class CarCompanyInputDto {
+    @Size(max = 25)
     private String name;
 
-    @NotBlank
+    @Size(max = 25)
     private String country;
 
-    @NotBlank
+    @Size(max = 25)
     private String city;
 }

@@ -1,9 +1,8 @@
-package com.korbiak.demo.mapper;
+package com.korbiak.demo.dto.mapper;
 
 import com.korbiak.demo.dto.input.EngineInputDto;
 import com.korbiak.demo.dto.output.EngineDto;
 import com.korbiak.demo.model.Engine;
-import org.mapstruct.Mapper;
 
 public interface EngineMapper {
 

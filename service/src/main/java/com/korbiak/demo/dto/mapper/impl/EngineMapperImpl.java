@@ -1,8 +1,8 @@
-package com.korbiak.demo.mapper.impl;
+package com.korbiak.demo.dto.mapper.impl;
 
 import com.korbiak.demo.dto.input.EngineInputDto;
+import com.korbiak.demo.dto.mapper.EngineMapper;
 import com.korbiak.demo.dto.output.EngineDto;
-import com.korbiak.demo.mapper.EngineMapper;
 import com.korbiak.demo.model.Engine;
 import org.springframework.stereotype.Component;
 
@@ -10,6 +10,9 @@ import org.springframework.stereotype.Component;
 public class EngineMapperImpl implements EngineMapper {
     @Override
     public EngineDto getDtoFromModel(Engine engine) {
+        if (engine == null) {
+            return new EngineDto();
+        }
         return EngineDto.builder()
                 .id(engine.getId())
                 .engineModel(engine.getEngineModel())
@@ -21,6 +24,9 @@ public class EngineMapperImpl implements EngineMapper {
 
     @Override
     public Engine getModelFromDto(EngineInputDto engineInputDto) {
+        if (engineInputDto == null) {
+            return new Engine();
+        }
         return Engine.builder()
                 .engineModel(engineInputDto.getEngineModel())
                 .horsePower(engineInputDto.getHorsePower())
@@ -31,6 +37,9 @@ public class EngineMapperImpl implements EngineMapper {
 
     @Override
     public Engine getModelFromDto(EngineDto engineDto) {
+        if (engineDto == null) {
+            return new Engine();
+        }
         return Engine.builder()
                 .id(engineDto.getId())
                 .engineModel(engineDto.getEngineModel())
