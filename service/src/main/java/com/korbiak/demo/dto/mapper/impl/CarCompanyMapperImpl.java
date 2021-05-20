@@ -7,7 +7,7 @@ import com.korbiak.demo.model.CarCompany;
 import org.springframework.stereotype.Component;
 
 @Component
-public class CompanyMapperImpl implements CarCompanyMapper {
+public class CarCompanyMapperImpl implements CarCompanyMapper {
     @Override
     public CarCompanyDto getDtoFromModel(CarCompany company) {
         if (company == null) {

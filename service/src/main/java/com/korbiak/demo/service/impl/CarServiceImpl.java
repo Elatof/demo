@@ -1,7 +1,6 @@
 package com.korbiak.demo.service.impl;
 
 import com.korbiak.demo.dto.input.CarInputDto;
-import com.korbiak.demo.dto.mapper.CarCompanyMapper;
 import com.korbiak.demo.dto.mapper.CarMapper;
 import com.korbiak.demo.dto.output.CarDto;
 import com.korbiak.demo.model.Car;
@@ -11,6 +10,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.dao.EmptyResultDataAccessException;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.EntityNotFoundException;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -20,7 +20,6 @@ public class CarServiceImpl implements CarService {
 
     private final CarRepo carRepo;
     private final CarMapper carMapper;
-    private final CarCompanyMapper companyMapper;
 
     @Override
     public List<CarDto> getAllCars() {
@@ -57,7 +56,11 @@ public class CarServiceImpl implements CarService {
 
     @Override
     public CarDto getCarByName(String name) {
-        return null;
+        Car car = carRepo.findCarByModelName(name);
+        if (car == null) {
+            throw new EntityNotFoundException("Car with not exist with name =" + name);
+        }
+        return carMapper.getDtoFromModel(car);
     }
 
     @Override

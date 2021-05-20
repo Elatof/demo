@@ -36,6 +36,11 @@ public class CarController {
         return carService.getCarById(carId);
     }
 
+    @GetMapping("modelName")
+    public CarDto getCarByModelName(@RequestParam String modelName) {
+        return carService.getCarByName(modelName);
+    }
+
     @PostMapping
     public CarDto saveNewCar(@RequestBody @Validated CarInputDto carInputDto) {
         return carService.saveCar(carInputDto);
