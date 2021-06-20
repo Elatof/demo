@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Hello WebSocket for Cars Management</title>
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <link href="/main.css" rel="stylesheet">
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <script src="/app.js"></script>
+</head>
+<body>
+<noscript><h2 style="color: #ff0000">Seems your browser doesn't support Javascript! Websocket relies on Javascript being
+    enabled. Please enable
+    Javascript and reload this page!</h2></noscript>
+<div id="main-content" class="container">
+    <div class="row">
+        <div class="col-md-6">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="connect">WebSocket connection:</label>
+                    <button id="connect" class="btn btn-default" type="submit">Connect</button>
+                    <button id="disconnect" class="btn btn-default" type="submit" disabled="disabled">Disconnect
+                    </button>
+                </div>
+            </form>
+        </div>
+        <div class="col-md-6">
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="call">You can call all cars in DB:</label>
+                </div>
+                <button id="call" class="btn btn-default" type="submit">Call</button>
+            </form>
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="car_id">You can call car by id:</label>
+                    <input type="number" id="car_id" class="form-control" placeholder="Your car id here...">
+                </div>
+                <button id="call_id" class="btn btn-default" type="submit">Call</button>
+            </form>
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="car_body">You can add car:</label>
+                    <input type="text" id="car_body" class="form-control" placeholder="Your car body here...">
+                </div>
+                <button id="call_add" class="btn btn-default" type="submit">Add</button>
+            </form>
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="car_body_update">You can update car:</label>
+                    <input type="text" id="car_body_update" class="form-control" placeholder="Your car body here...">
+                </div>
+                <button id="call_update" class="btn btn-default" type="submit">Update</button>
+            </form>
+            <form class="form-inline">
+                <div class="form-group">
+                    <label for="car_id_delete">You can delete car:</label>
+                    <input type="number" id="car_id_delete" class="form-control" placeholder="Your car id here...">
+                </div>
+                <button id="call_delete" class="btn btn-default" type="submit">Delete</button>
+            </form>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-md-12">
+            <table id="conversation" class="table table-striped">
+                <thead>
+                <tr>
+                    <th>Listening socket:</th>
+                </tr>
+                </thead>
+                <tbody id="cars">
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
+</body>
+</html>

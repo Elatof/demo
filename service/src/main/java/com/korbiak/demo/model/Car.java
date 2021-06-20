@@ -33,7 +33,7 @@ public class Car {
     @JoinColumn(name = "car_company_id")
     private CarCompany company;
 
-    @ManyToMany
+    @ManyToMany(fetch = FetchType.EAGER)
     @JoinTable(
             name = "car_engine",
             joinColumns = { @JoinColumn(name = "car_id") },

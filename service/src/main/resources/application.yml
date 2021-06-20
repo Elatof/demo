@@ -15,4 +15,5 @@ spring:
           format_sql: true
           dialect: org.hibernate.dialect.PostgreSQLDialect
           current_session_context_class: org.springframework.orm.hibernate5.SpringSessionContext
-
+server:
+  port: 8081
